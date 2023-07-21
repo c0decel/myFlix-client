@@ -1,13 +1,15 @@
-import { createRoot } from 'react-dom/client';
-
-// statement to indicate that you need to bundle `./index.scss`
+import { createRoot } from "react-dom/client";
+import { MainView } from "./components/main-view/main-view";
+import { MovieView } from "./components/movie-view/movie-view";
+import { MovieCard } from "./components/movie-card/movie-card";
 import "./index.scss";
 
 // main component (will eventually use all the others)
 const MyFlixApplication = () => {
   return (
     <div className="my-flix">
-      <div>Good morning</div>
+      {/* Render the MainView component */}
+      <MainView />
     </div>
   );
 };
