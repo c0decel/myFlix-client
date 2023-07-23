@@ -18,7 +18,8 @@ export const MovieView = ({ movie, onBackClick }) => {
         <span>{movie.Description}</span>
       </div>
       <div>
-        <img src={movie.image} />
+        <span>Image:</span>
+        <img src={movie.Image} alt="Movie Image" />
       </div>
       <button onClick={onBackClick}>Back</button>
     </div>
