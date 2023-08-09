@@ -1,9 +1,13 @@
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import { addFavorite, removeFavorite } from "../profile-view/manage-favorites";
 import "./movie-view.scss";
 
-export const MovieView = ({ movies, addToFavorites }) => {
+export const MovieView = ({ movies, user }) => {
+
   const { movieId } = useParams();
+  const token = localStorage.getItem("token");
 
   const movie = movies.find((movie) => movie.Id === movieId);
 
@@ -29,10 +33,9 @@ export const MovieView = ({ movies, addToFavorites }) => {
         <img className="w-100" src={movie.Image} />
       </div>
       <div>
-      <button className="button" onClick={() => addToFavorites(movie.Id)} variant="primary">
-        Add to Favorites
-      </button>
     </div>
+    <button variant="link" className="button" onClick={() => addFavorite(user, movieId, token)}>Add to Favorites</button>
+<button variant="link" className="button" onClick={() => removeFavorite(user, movieId, token)}>Remove Favorite</button>
       <Link to={`/`}>
         <button className="button">Back</button>
       </Link>

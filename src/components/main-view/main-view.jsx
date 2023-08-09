@@ -146,6 +146,7 @@ export const MainView = () => {
             }
           />
 
+
           <Route
             path="/"
             element={
@@ -164,7 +165,7 @@ export const MainView = () => {
                     <button
                       className="button"
                       onClick={() => {
-                        handleLogout(); // Call the logout function
+                        handleLogout(); // call logout
                       }}
                     >
                       Logout

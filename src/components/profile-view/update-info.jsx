@@ -31,7 +31,7 @@ export const UpdateInfo = ({ user }) => {
     ).then((response) => {
       if (response.ok) {
         alert("information updated");
-        window.location.reload();
+        window.location.href = "/"; //need to update to refresh
       } else {
         alert("update failed, sign up with the right info next time");
       }

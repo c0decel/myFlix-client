@@ -2,14 +2,14 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-export const DeleteAccount = ({ user, onLoggedOut }) => {
+export const DeleteAccount = ({ user }) => {
   const [confirmation, setConfirmation] = useState("");
   const storedToken = localStorage.getItem("token");
 
   const handleLogout = () => {
     localStorage.removeItem("user"); // removes user from local storage
-    localStorage.removeItem("token"); // Clear the token from local storage
-    window.location.href = "/login"; // Redirect the user to the login page
+    localStorage.removeItem("token"); // removes token from local storage
+    window.location.href = "/login"; // redirects to login
   };
 
   const handleDelete = (event) => {
@@ -29,7 +29,7 @@ export const DeleteAccount = ({ user, onLoggedOut }) => {
         if (response.ok) {
           alert("account deleted. BYE");
           handleLogout();
-          window.location.href = "/signup";
+          window.location.href = "/signup"; //redirects to sign up page
         } else {
           alert("deletion failed. you're here forever.");
         }
