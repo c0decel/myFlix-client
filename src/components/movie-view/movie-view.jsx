@@ -1,4 +1,12 @@
-export const MovieView = ({ movie, onBackClick }) => {
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
+import "./movie-view.scss";
+
+export const MovieView = ({ movies, addToFavorites }) => {
+  const { movieId } = useParams();
+
+  const movie = movies.find((movie) => movie.Id === movieId);
+
   return (
     <div>
       <div>
@@ -7,20 +15,27 @@ export const MovieView = ({ movie, onBackClick }) => {
       </div>
       <div>
         <span>Director: </span>
-        <span>{movie.Director}</span>
+        <span>{movie.Director.Name}</span>
       </div>
       <div>
         <span>Genre: </span>
-        <span>{movie.Genre}</span>
+        <span>{movie.Genre.Name}</span>
       </div>
       <div>
         <span>Description: </span>
         <span>{movie.Description}</span>
       </div>
       <div>
-        <img src={movie.Image} alt="Movie Image" />
+        <img className="w-100" src={movie.Image} />
       </div>
-      <button onClick={onBackClick}>Back</button>
+      <div>
+      <button className="button" onClick={() => addToFavorites(movie.Id)} variant="primary">
+        Add to Favorites
+      </button>
+    </div>
+      <Link to={`/`}>
+        <button className="button">Back</button>
+      </Link>
     </div>
   );
 };
