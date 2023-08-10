@@ -16,7 +16,8 @@ export const SignupView = ({ onLoggedIn }) => {
       Username: username,
       Pass: password,
       Email: email,
-      Birthdate: birthdate
+      Birthdate: birthdate,
+      FavoriteMovies: favoritemovies
     };
 
     fetch("https://movie-apis-84b92f93a404.herokuapp.com/users", {

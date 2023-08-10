@@ -1,6 +1,5 @@
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
 import { addFavorite, removeFavorite } from "../profile-view/manage-favorites";
 import "./movie-view.scss";
 
@@ -9,7 +8,7 @@ export const MovieView = ({ movies, user }) => {
   const { movieId } = useParams();
   const token = localStorage.getItem("token");
 
-  const movie = movies.find((movie) => movie.Id === movieId);
+  const movie = movies.find((movie) => movie.Id.$oid === movieId);
 
   return (
     <div>
@@ -28,6 +27,10 @@ export const MovieView = ({ movies, user }) => {
       <div>
         <span>Description: </span>
         <span>{movie.Description}</span>
+      </div>
+      <div>
+        <span>ID: </span>
+        <span>{movieId}</span>
       </div>
       <div>
         <img className="w-100" src={movie.Image} />

@@ -11,7 +11,6 @@ import "../../index.scss";
 
 export const MainView = () => {
   const storedUser = localStorage.getItem("user");
-  console.log(storedUser);
   const storedToken = localStorage.getItem("token");
   const [user, setUser] = useState(
     !storedUser || storedUser === "undefined" ? null : JSON.parse(storedUser)
@@ -30,7 +29,7 @@ export const MainView = () => {
       .then((data) => {
         const moviesFromApi = data.map((movie) => {
           return {
-            Id: movie._id,
+            Id: {$oid: movie._id}, //be careful changing you'll break ya whole shit
             Title: movie.Title,
             Description: movie.Description,
             Director: {
@@ -58,6 +57,7 @@ export const MainView = () => {
     setUser(user);
     setToken(token);
     updateLocalStorage(user, token);
+    console.log("new sesh, welcome", user);
   };
 
   const handleLogout = () => {
@@ -139,7 +139,7 @@ export const MainView = () => {
                   <Navigate to="/login" replace />
                 ) : (
                   <Col md={8}>
-                    <ProfileView user={user} />
+                    <ProfileView user={user} movies={movies} />
                   </Col>
                 )}
               </>
@@ -158,7 +158,7 @@ export const MainView = () => {
                 ) : (
                   <>
                     {movies.map((movie) => (
-                      <Col className="mb-4" key={movie.Id} md={3}>
+                      <Col className="mb-4" key={movie.Id.$oid} md={3}>
                         <MovieCard movie={movie} />
                       </Col>
                     ))}

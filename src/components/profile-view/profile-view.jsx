@@ -2,27 +2,46 @@ import React from "react";
 import { DeleteAccount } from "./delete-account";
 import { UpdateInfo } from "./update-info";
 import { MovieCard } from "../movie-card/movie-card";
-import { Link } from "react-router-dom";
 
-const ProfileView = ({ user }) => {
-  console.log("Favorite Movies:", user.FavoriteMovies);
-
+const ProfileView = ({ user, movies }) => {
+  
   return (
+
     <div>
-      <h2>Profile</h2>
-      <p>Username: {user.Username}</p>
+      
+      <div>
+      <h1>{user.Username}'s Profile</h1>
+      </div>
+
+      <div className="favorite-movies">
+
+        <h2>Favorites:</h2>
+          {user.FavoriteMovies.map((favoriteMovieId) => {
+            const matches = movies.find((movie) => movie.Id.$oid === favoriteMovieId);
+
+            if (matches) 
+            {
+              console.log("favoriteMovieId:", favoriteMovieId); //don't fk this up thanks
+              console.log("matches:", matches); //don't move this it'll make ur life much harder
+
+              return (
+                <div key={favoriteMovieId}>
+                  <MovieCard movie={matches} />
+                </div>
+              );
+            }
+            
+            return null;
+          })}
+        </div>
+      <h3>Account Details:</h3>
       <p>Email: {user.Email}</p>
       <p>Birthdate: {user.Birthdate}</p>
-      <p>Favorites:</p>
-      <div className="favorite-movies">
-        {user.FavoriteMovies.map((movie) => {
-          return <MovieCard key={movie.Id} movie={movie} />;
-        })}
-      </div>
+      <h4>Update Account Information:</h4>
       <UpdateInfo user={user} />
+      <h5>Delete Account FOREVER:</h5>
       <DeleteAccount user={user} />
     </div>
   );
 };
-
 export default ProfileView;

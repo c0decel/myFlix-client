@@ -41,7 +41,7 @@ export const UpdateInfo = ({ user }) => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="formUsername">
-        <Form.Label>new username:</Form.Label>
+        <Form.Label>New Username:</Form.Label>
         <Form.Control
           type="text"
           value={username}
@@ -56,7 +56,7 @@ export const UpdateInfo = ({ user }) => {
           onChange={(e) => updatePassword(e.target.value)}
         />
       </Form.Group>
-      <Form.Group controlId="formUsername">
+      <Form.Group controlId="formEmail">
         <Form.Label>new email:</Form.Label>
         <Form.Control
           type="email"
