@@ -30,6 +30,7 @@ export const LoginView = ({ onLoggedIn }) => {
           onLoggedIn(data.user, data.token);
         } else {
           alert("user doesn't exist");
+          console.error();
         }
       })
       .catch((e) => {

@@ -5,6 +5,7 @@ import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import ProfileView from "../profile-view/profile-view";
+//import { UpdateInfo } from "../profile-view/update-info";
 import { Row, Col } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "../../index.scss";
@@ -17,6 +18,11 @@ export const MainView = () => {
   );
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
+
+ // const UpdateInfo = (user) => {
+    //setUser(user);
+   // localStorage.setItem('user', JSON.stringify(user));
+ // };
 
   useEffect(() => {
     if (!token) {
@@ -139,7 +145,7 @@ export const MainView = () => {
                   <Navigate to="/login" replace />
                 ) : (
                   <Col md={8}>
-                    <ProfileView user={user} movies={movies} />
+                    <ProfileView user={user} movies={movies} setUser={setUser} />
                   </Col>
                 )}
               </>

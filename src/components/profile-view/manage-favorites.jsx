@@ -1,6 +1,6 @@
 //add or remove favorite movies
 
-export const addFavorite = async (username, movieId, token) => {
+export const addFavorite = async (username, movieId, token, onApiDataChange) => {
     try {
       const response = await fetch(`https://movie-apis-84b92f93a404.herokuapp.com/users/${username}/movies/${movieId}`, {
         method: "PUT",
@@ -11,7 +11,7 @@ export const addFavorite = async (username, movieId, token) => {
       });
   
       if (response.ok) {
-        alert("added to favorites");
+        console.log("added", {movieId}, "to favorites");
         return true; // successfully added
       } else {
         alert("failed to add to favorites");

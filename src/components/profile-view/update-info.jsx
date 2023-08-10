@@ -1,21 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../../index.scss";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-export const UpdateInfo = ({ user }) => {
+export const UpdateInfo = ({ user, updateUser, setUser }) => {
   const [username, updateUsername] = useState("");
-  const [password, updatePassword] = useState("");
-  const [email, updateEmail] = useState("");
   const storedToken = localStorage.getItem("token");
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const data = {
-      Username: username,
-      Password: password,
-      Email: email
+      Username: username
     };
 
     fetch(
@@ -30,8 +26,9 @@ export const UpdateInfo = ({ user }) => {
       }
     ).then((response) => {
       if (response.ok) {
-        alert("information updated");
-        window.location.href = "/"; //need to update to refresh
+        console.log("Information updated, new username is", username);
+        updateUser(username);
+        setUser({ ...user, Username: username });
       } else {
         alert("update failed, sign up with the right info next time");
       }
@@ -46,27 +43,13 @@ export const UpdateInfo = ({ user }) => {
           type="text"
           value={username}
           onChange={(e) => updateUsername(e.target.value)}
+          required
         />
-      </Form.Group>
-      <Form.Group controlId="formPassword">
-        <Form.Label>new password:</Form.Label>
-        <Form.Control
-          type="password"
-          value={password}
-          onChange={(e) => updatePassword(e.target.value)}
-        />
-      </Form.Group>
-      <Form.Group controlId="formEmail">
-        <Form.Label>new email:</Form.Label>
-        <Form.Control
-          type="email"
-          value={email}
-          onChange={(e) => updateEmail(e.target.value)}
-        />
-      </Form.Group>
-      <Button type="submit" className="button">
-        update information
+              </Form.Group>
+           <Button type="submit" className="button">
+        Update Username
       </Button>
     </Form>
   );
+  
 };
