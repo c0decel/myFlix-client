@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { addFavorite, removeFavorite } from "../profile-view/manage-favorites";
 import "./movie-view.scss";
 
-export const MovieView = ({ movies, user }) => {
+export const MovieView = ({ movies, user, setUser }) => {
 
   const { movieId } = useParams();
   const token = localStorage.getItem("token");
@@ -37,8 +37,8 @@ export const MovieView = ({ movies, user }) => {
       </div>
       <div>
     </div>
-    <button variant="link" className="button" onClick={() => addFavorite(user, movieId, token)}>Add to Favorites</button>
-<button variant="link" className="button" onClick={() => removeFavorite(user, movieId, token)}>Remove Favorite</button>
+    <button variant="link" className="button" onClick={() => addFavorite(user.Username, movie.Id.$oid, token)}>Add to Favorites</button>
+<button variant="link" className="button" onClick={() => removeFavorite(user.Username, movie.Id.$oid, token)}>Remove Favorite</button>
       <Link to={`/`}>
         <button className="button">Back</button>
       </Link>

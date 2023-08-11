@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { DeleteAccount } from "./delete-account";
 import { UpdateInfo } from "./update-info";
 import { MovieCard } from "../movie-card/movie-card";
-import { addFavorite, removeFavorite } from "./manage-favorites";
 
 const ProfileView = ({ user, movies, setUser }) => {
 
@@ -44,7 +43,6 @@ const ProfileView = ({ user, movies, setUser }) => {
       <p>Birthdate: {user.Birthdate}</p>
       <h4>Update Account Information:</h4>
       <UpdateInfo user={user} updateUser={handleUpdateUser} setUser={setUser} />
-      <h5>Delete Account FOREVER:</h5>
       <DeleteAccount user={user} />
     </div>
   );

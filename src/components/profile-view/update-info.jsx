@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "../../index.scss";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -53,3 +53,4 @@ export const UpdateInfo = ({ user, updateUser, setUser }) => {
   );
   
 };
+
