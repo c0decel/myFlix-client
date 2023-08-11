@@ -1,18 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export const MovieCard = ({ movie }) => {
+  const maxDescriptionLength = 50;
+
+  const shortDescription =
+    movie.Description.length > maxDescriptionLength
+      ? movie.Description.slice(0, maxDescriptionLength) + "..."
+      : movie.Description;
+
   return (
-    <Card className="h-100">
+    <Card className="card">
       <Card.Img variant="top" src={movie.Image} />
       <Card.Body>
-      <Link to={`/movies/${movie.Id.$oid}`}>
-        <Card.Title>{movie.Title}</Card.Title>
+      <Link className="link" to={`/movies/${movie.Id.$oid}`}>
+        <Card.Title className="title">{movie.Title}</Card.Title>
         </Link>
-        <Card.Text>{movie.Description}</Card.Text>
-        <Card.Text>{movie.Id.$oid}</Card.Text>
+        <Card.Text>{shortDescription}</Card.Text>
       </Card.Body>
     </Card>
   );

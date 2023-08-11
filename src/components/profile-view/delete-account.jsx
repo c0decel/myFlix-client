@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import "../../index.scss";
 
 export const DeleteAccount = ({ user }) => {
   const [confirmation, setConfirmation] = useState("");
@@ -40,9 +41,9 @@ export const DeleteAccount = ({ user }) => {
   };
 
   return (
-    <Form onSubmit={handleDelete}>
+    <Form className="form" onSubmit={handleDelete}>
       <Form.Group controlId="formConfirmation">
-        <Form.Label>type your username to delete:</Form.Label>
+        <Form.Label>Type your username to delete:</Form.Label>
         <Form.Control
           type="text"
           value={confirmation}
@@ -51,8 +52,8 @@ export const DeleteAccount = ({ user }) => {
         />
       </Form.Group>
 
-      <Button type="submit" className="button">
-        delete account
+      <Button type="submit" style={{backgroundColor: "#C886FF", fontFamily: "Caprasimo, cursive"}}>
+        Delete account
       </Button>
     </Form>
   );

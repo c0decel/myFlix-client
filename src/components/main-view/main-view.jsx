@@ -6,6 +6,7 @@ import { SignupView } from "../signup-view/signup-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import ProfileView from "../profile-view/profile-view";
 import { Row, Col } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "../../index.scss";
 
@@ -17,11 +18,6 @@ export const MainView = () => {
   );
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
-
- // const UpdateInfo = (user) => {
-    //setUser(user);
-   // localStorage.setItem('user', JSON.stringify(user));
- // };
 
   useEffect(() => {
     if (!token) {
@@ -129,7 +125,7 @@ export const MainView = () => {
                   <Col>list is empty</Col>
                 ) : (
                   <Col md={8}>
-                    <MovieView movies={movies} user={user} />
+                    <MovieView movies={movies} user={user} setUser={setUser} />
                   </Col>
                 )}
               </>
@@ -185,14 +181,14 @@ export const MainView = () => {
                         <MovieCard movie={movie} />
                       </Col>
                     ))}
-                    <button
-                      className="button"
+                    <Button
+                      style={{backgroundColor: "#C886FF", fontFamily: "Caprasimo, cursive"}}
                       onClick={() => {
                         handleLogout(); // call logout
                       }}
                     >
                       Logout
-                    </button>
+                    </Button>
                   </>
                 )}
               </>

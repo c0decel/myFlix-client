@@ -2,16 +2,19 @@ import { useState } from "react";
 import "../../index.scss";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import "../../index.scss";
 
-export const UpdateInfo = ({ user, updateUser, setUser }) => {
+export const UpdateInfo = ({ user, setUser }) => {
   const [username, updateUsername] = useState("");
+  const [password, updatePassword] = useState("");
   const storedToken = localStorage.getItem("token");
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const data = {
-      Username: username
+      Username: username,
+      Password: password
     };
 
     fetch(
@@ -27,7 +30,6 @@ export const UpdateInfo = ({ user, updateUser, setUser }) => {
     ).then((response) => {
       if (response.ok) {
         console.log("Information updated, new username is", username);
-        updateUser(username);
         setUser({ ...user, Username: username });
       } else {
         alert("update failed, sign up with the right info next time");
@@ -36,7 +38,7 @@ export const UpdateInfo = ({ user, updateUser, setUser }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form className="form" onSubmit={handleSubmit}>
       <Form.Group controlId="formUsername">
         <Form.Label>New Username:</Form.Label>
         <Form.Control
@@ -46,8 +48,19 @@ export const UpdateInfo = ({ user, updateUser, setUser }) => {
           required
         />
               </Form.Group>
-           <Button type="submit" className="button">
-        Update Username
+
+              <Form.Group controlId="formPassword">
+        <Form.Label>New Password:</Form.Label>
+        <Form.Control
+          type="text"
+          value={password}
+          onChange={(e) => updatePassword(e.target.value)}
+          required
+        />
+              </Form.Group>
+
+           <Button type="submit" style={{backgroundColor: "#C886FF", fontFamily: "Caprasimo, cursive"}}>
+        Update information
       </Button>
     </Form>
   );

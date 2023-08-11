@@ -35,7 +35,7 @@ export const SignupView = ({ onLoggedIn }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form className="form" onSubmit={handleSubmit}>
       <Form.Group controlId="formUsername">
         <Form.Label>Username:</Form.Label>
         <Form.Control
@@ -77,8 +77,8 @@ export const SignupView = ({ onLoggedIn }) => {
         />
       </Form.Group>
 
-      <Button type="submit" className="button">
-        sign up
+      <Button type="submit" style={{backgroundColor: "#C886FF", fontFamily: "Caprasimo, cursive"}}>
+        Sign up
       </Button>
     </Form>
   );

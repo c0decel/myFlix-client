@@ -2,49 +2,49 @@ import React from "react";
 import { DeleteAccount } from "./delete-account";
 import { UpdateInfo } from "./update-info";
 import { MovieCard } from "../movie-card/movie-card";
+import "../../index.scss";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 const ProfileView = ({ user, movies, setUser }) => {
-
-  const handleUpdateUser = (newUsername) => {
-    setUser({ ...user, Username: newUsername }); // Update the username in user state
-  };
-  
   return (
+    <>
 
-    <div>
-      <div>
       <h1>{user.Username}'s Profile</h1>
-      </div>
 
-      <div className="favorite-movies">
+      <h2>Favorites:</h2>
 
-        <h2>Favorites:</h2>
+      <Col>
+      <Row md={3}>
           {user.FavoriteMovies.map((favoriteMovieId) => {
             const matches = movies.find((movie) => movie.Id.$oid === favoriteMovieId);
 
             if (matches) 
             {
-              console.log("favoriteMovieId:", favoriteMovieId); //don't fk this up thanks
-              console.log("matches:", matches); //don't move this it'll make ur life much harder
-
               return (
-                <div key={favoriteMovieId}>
+                <Row key={favoriteMovieId}>
                   <MovieCard movie={matches} />
-                </div>
+                </Row>
               );
             }
             
             return null;
           })}
-        </div>
+          </Row>
+</Col>
+      <Row>
       <h3>Account Details:</h3>
+      <Col>
       <p>Username: {user.Username}</p>
       <p>Email: {user.Email}</p>
       <p>Birthdate: {user.Birthdate}</p>
       <h4>Update Account Information:</h4>
-      <UpdateInfo user={user} updateUser={handleUpdateUser} setUser={setUser} />
+      <UpdateInfo user={user} setUser={setUser} />
       <DeleteAccount user={user} />
-    </div>
+      </Col>
+
+    </Row>
+    </>
   );
 };
 export default ProfileView;

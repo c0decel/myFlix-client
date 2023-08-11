@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 export const NavigationBar = ({ user, onLoggedOut }) => {
   return (
     <Navbar bg="light" expand="lg">
-      <Container>
-        <Navbar.Brand as={Link} to="/">
-          movies app
+      <Container className="nav" >
+        <Navbar.Brand style={{fontSize: "35px"}} as={Link} to="/">
+          MyFlix
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -15,10 +15,10 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
             {!user && (
               <>
                 <Nav.Link as={Link} to="/login">
-                  log in
+                  Log in
                 </Nav.Link>
                 <Nav.Link as={Link} to="/signup">
-                  sign up
+                  Sign up
                 </Nav.Link>
               </>
             )}
@@ -26,12 +26,12 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
             {user && (
               <>
                 <Nav.Link as={Link} to="/">
-                  home
+                  Home
                 </Nav.Link>
                 <Nav.Link as={Link} to="/profile">
-                  profile
+                  Profile
                 </Nav.Link>
-                <Nav.Link onClick={onLoggedOut}>log out</Nav.Link>
+                <Nav.Link onClick={onLoggedOut}>Log Out</Nav.Link>
               </>
             )}
           </Nav>
