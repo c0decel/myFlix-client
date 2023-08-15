@@ -3,7 +3,7 @@ import "../../index.scss";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-export const SignupView = () => {
+export const SignupView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -16,7 +16,7 @@ export const SignupView = () => {
       Username: username,
       Pass: password,
       Email: email,
-      Birthdate: birthdate
+      Birthdate: birthdate,
     };
 
     fetch("https://movie-apis-84b92f93a404.herokuapp.com/users", {
@@ -27,8 +27,7 @@ export const SignupView = () => {
       }
     }).then((response) => {
       if (response.ok) {
-        alert("signup successful");
-        window.location.reload();
+        window.location.href = "/login";
       } else {
         alert("signup failed");
       }
@@ -36,7 +35,7 @@ export const SignupView = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form className="form" onSubmit={handleSubmit}>
       <Form.Group controlId="formUsername">
         <Form.Label>Username:</Form.Label>
         <Form.Control
@@ -78,8 +77,8 @@ export const SignupView = () => {
         />
       </Form.Group>
 
-      <Button type="submit" className="button">
-        sign up
+      <Button type="submit" style={{backgroundColor: "#C886FF", fontFamily: "Caprasimo, cursive"}}>
+        Sign up
       </Button>
     </Form>
   );
