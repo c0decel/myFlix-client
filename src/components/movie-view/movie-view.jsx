@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../../index.scss";
 import Button from "react-bootstrap/Button";
+import { MovieCard } from "../movie-card/movie-card";
+import { Col, Row } from "react-bootstrap";
 
 export const MovieView = ({ movies, user, setUser }) => {
 
@@ -53,6 +55,10 @@ export const MovieView = ({ movies, user, setUser }) => {
   
   const movie = movies.find((movie) => movie.Id.$oid === movieId);
 
+  const similarMovies = movies.filter(
+    (m) => m.Genre.Name === movie.Genre.Name && m.Id.$oid !== movieId
+  );
+
   return (
     <div className="movie-view">
 
@@ -84,7 +90,24 @@ export const MovieView = ({ movies, user, setUser }) => {
             ) : (
                 <Button style={{backgroundColor: "#C886FF", fontFamily: "Caprasimo, cursive"}} onClick={addFavorite}>Add to favorites</Button>
             )}
-    
+    <div>
+      {similarMovies.length > 0 ? (
+
+      similarMovies.map((similarMovies) => (
+        <Col>
+        <h2>Similar movies:</h2>
+        <Row className="mb-4" md={3}>
+        <MovieCard key={similarMovies.Id.$oid} movie={similarMovies} />
+        </Row>
+        </Col>
+      ))
+
+      ) : (
+        <p></p>
+      )}
+
+    </div>
+
       <Link to={`/`}>
         <Button style={{backgroundColor: "#C886FF", fontFamily: "Caprasimo, cursive"}}>Back</Button>
       </Link>

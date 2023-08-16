@@ -1,9 +1,67 @@
 .button {
-  color: #f5f5f5;
-  background-color: #b51800;
+  color: #fff;
+  background-color: #e2c0ff;
   border: none;
   border-radius: 4px;
   padding: 4px 12px;
+}
+
+.nav {
+  background-color: #c0fdff;
+  border: 5px solid #000;
+  font-family: Caprasimo, cursive;
+}
+
+h2, h3, h4, .title {
+  color: #000;
+  font-family: Caprasimo, cursive;
+}
+
+h1 {
+  text-align: center;
+  background-color: #c0fdff;
+  border: 5px solid #000;
+  padding: 20px;
+  font-family: Caprasimo, cursive;
+}
+
+p, span, .form {
+  font-family: Sarabun, sans-serif;
+  font-weight: bold;
+}
+
+.link {
+  color: #000;
+  text-decoration: none;
+}
+
+.card {
+  padding: 20px;
+}
+
+.cardbg {
+  background-color: #c0fdff;
+}
+
+.movie-view {
+  text-align: center;
+  background-color: #c0fdff;
+  border: 5px solid #000;
+  padding: 50px;
+}
+
+.movie-view-title {
+  margin: 20px;
+  font-family: Caprasimo, cursive;
+  font-size: 30px;
+}
+
+.desc {
+  background-color: #e2c0ff;
+  border: 5px solid #000;
+  margin: 20px;
+  padding: 20px;
+  font-weight: bold;
 }
 
 :root, [data-bs-theme="light"] {

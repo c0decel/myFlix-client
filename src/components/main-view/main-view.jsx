@@ -4,6 +4,7 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
+import { Search } from "../main-view/search-view";
 import ProfileView from "../profile-view/profile-view";
 import { Row, Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
@@ -165,6 +166,21 @@ export const MainView = () => {
             }
           />
 
+<Route
+            path="/search"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to="/login" replace />
+                ) : (
+                  <Col md={8}>
+                    <Search user={user} movies={movies} setUser={setUser} />
+                  </Col>
+                )}
+              </>
+            }
+          />
+
 
           <Route
             path="/"
@@ -176,11 +192,14 @@ export const MainView = () => {
                   <Col>nothing here</Col>
                 ) : (
                   <>
+
                     {movies.map((movie) => (
                       <Col className="mb-4" key={movie.Id.$oid} md={3}>
                         <MovieCard movie={movie} />
                       </Col>
                     ))}
+
+
                     <Button
                       style={{backgroundColor: "#C886FF", fontFamily: "Caprasimo, cursive"}}
                       onClick={() => {

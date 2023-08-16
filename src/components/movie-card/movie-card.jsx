@@ -12,9 +12,9 @@ export const MovieCard = ({ movie }) => {
       : movie.Description;
 
   return (
-    <Card className="card">
+    <Card className="card" style={{backgroundColor: "#E2C0FF"}}>
       <Card.Img variant="top" src={movie.Image} />
-      <Card.Body>
+      <Card.Body className="cardbg">
       <Link className="link" to={`/movies/${movie.Id.$oid}`}>
         <Card.Title className="title">{movie.Title}</Card.Title>
         </Link>
