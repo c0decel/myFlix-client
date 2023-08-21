@@ -18,7 +18,7 @@ export const MovieView = ({ movies, user, setUser }) => {
   }, []);
 
   
-  removeFav = () => {
+  const removeFav = () => {
     fetch(`https://movie-apis-84b92f93a404.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
         method: "DELETE",
         headers: {
@@ -35,8 +35,8 @@ export const MovieView = ({ movies, user, setUser }) => {
         setUser(data);
       })
   };
-  
-  addFav = () => {
+
+ const addFav = () => {
     fetch(`https://movie-apis-84b92f93a404.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
         method: "PUT",
         headers: {
