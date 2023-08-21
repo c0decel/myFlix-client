@@ -17,24 +17,7 @@ export const MovieView = ({ movies, user, setUser }) => {
     setFav(inFavs)
   }, []);
 
-  addFav = () => {
-    fetch(`https://movie-apis-84b92f93a404.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
-        }
-      }).then((response) => {
-      if (response.ok) {
-        console.log("added", movieId, "to favorites");
-        return response.json(); // successfully added
-      }
-      }).then((data) => {
-        localStorage.setItem("user", JSON.stringify(data));
-        setUser(data);
-      })
-  };
-
+  
   removeFav = () => {
     fetch(`https://movie-apis-84b92f93a404.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
         method: "DELETE",
@@ -46,6 +29,24 @@ export const MovieView = ({ movies, user, setUser }) => {
       if (response.ok) {
         console.log("removed", movieId, "from favorites");
         return response.json(); // successfully deleted
+      }
+      }).then((data) => {
+        localStorage.setItem("user", JSON.stringify(data));
+        setUser(data);
+      })
+  };
+  
+  addFav = () => {
+    fetch(`https://movie-apis-84b92f93a404.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        }
+      }).then((response) => {
+      if (response.ok) {
+        console.log("added", movieId, "to favorites");
+        return response.json(); // successfully added
       }
       }).then((data) => {
         localStorage.setItem("user", JSON.stringify(data));
