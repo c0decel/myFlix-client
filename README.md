@@ -18,3 +18,9 @@
     react-router: 6.14.2
     react-router-dom: 6.14.2
     react-scripts: 5.0.1
+
+    # Screenshots
+    ![image](https://github.com/c0decel/myFlix-client/assets/124975714/caedbf06-6365-43db-b42a-3d8f2ae64b40)
+
+    
+
