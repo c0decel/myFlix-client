@@ -31,6 +31,8 @@ export const UpdateInfo = ({ user, setUser }) => {
       if (response.ok) {
         console.log("Information updated, new username is", username);
         setUser({ ...user, Username: username });
+        const updatedUserData = { ...user, Username: username };
+        localStorage.setItem("user", JSON.stringify(updatedUserData));
       } else {
         alert("update failed, sign up with the right info next time");
       }
@@ -66,4 +68,3 @@ export const UpdateInfo = ({ user, setUser }) => {
   );
   
 };
-
