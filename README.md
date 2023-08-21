@@ -21,7 +21,19 @@
 
     # Screenshots
     user profile
-    ![image](https://github.com/c0decel/myFlix-client/assets/124975714/dddd84d4-bb3c-467e-8401-231afe54372a)
+    ![profileview](https://github.com/c0decel/myFlix-client/assets/124975714/5b1aeb78-83a7-4bc0-9cf4-cedb1a5109ca)
+    movie view
+    ![movieview](https://github.com/c0decel/myFlix-client/assets/124975714/ca3c3d32-9422-4c40-a336-47dffb1bd69d)
+    homepage
+    ![homepage](https://github.com/c0decel/myFlix-client/assets/124975714/47146a0f-4a49-481c-83d9-52c883b784e7)
+    log in and sign up 
+    ![log in](https://github.com/c0decel/myFlix-client/assets/124975714/11bd40bf-ad0c-4002-a4a0-fd33156eef2a)
+    ![signup](https://github.com/c0decel/myFlix-client/assets/124975714/0cb5519a-a718-455a-b232-71e652ea2976)
+
+
+
+
+
 
 
     
