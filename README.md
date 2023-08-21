@@ -20,7 +20,9 @@
     react-scripts: 5.0.1
 
     # Screenshots
-    ![image](https://github.com/c0decel/myFlix-client/assets/124975714/caedbf06-6365-43db-b42a-3d8f2ae64b40)
+    user profile
+    ![image](https://github.com/c0decel/myFlix-client/assets/124975714/dddd84d4-bb3c-467e-8401-231afe54372a)
+
 
     
 
