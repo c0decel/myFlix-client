@@ -17,7 +17,7 @@ export const MovieView = ({ movies, user, setUser }) => {
     setFav(inFavs)
   }, []);
 
-  addFavorite = () => {
+  addFav = () => {
     fetch(`https://movie-apis-84b92f93a404.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
         method: "PUT",
         headers: {
@@ -35,7 +35,7 @@ export const MovieView = ({ movies, user, setUser }) => {
       })
   };
 
-  removeFavorite = () => {
+  removeFav = () => {
     fetch(`https://movie-apis-84b92f93a404.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
         method: "DELETE",
         headers: {
@@ -86,9 +86,9 @@ export const MovieView = ({ movies, user, setUser }) => {
         </div>
 
     {Fav ? (
-                <Button style={{backgroundColor: "#C886FF", fontFamily: "Caprasimo, cursive"}} onClick={removeFavorite}>Remove from favorites</Button>
+                <Button style={{backgroundColor: "#C886FF", fontFamily: "Caprasimo, cursive"}} onClick={removeFav}>Remove from favorites</Button>
             ) : (
-                <Button style={{backgroundColor: "#C886FF", fontFamily: "Caprasimo, cursive"}} onClick={addFavorite}>Add to favorites</Button>
+                <Button style={{backgroundColor: "#C886FF", fontFamily: "Caprasimo, cursive"}} onClick={addFav}>Add to favorites</Button>
             )}
     <div>
       {similarMovies.length > 0 ? (
